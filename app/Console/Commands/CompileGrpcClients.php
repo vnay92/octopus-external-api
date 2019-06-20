@@ -18,7 +18,7 @@ class CompileGrpcClients extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Compiles and generates the Clients for the Protocol Buffer gRPC calls';
 
     /**
      * Create a new command instance.
@@ -38,6 +38,27 @@ class CompileGrpcClients extends Command
     public function handle()
     {
         $this->info('Generating the proto compiler Command..');
-        $this->info('Hello There!');
+
+        $baseDirPath = base_path();
+        $phpOutPath = "$baseDirPath/app/Clients";
+        $protoPath = config('app.proto_base_dir');
+        $grpcPhpPluginPath = config('app.grpc_php_plugin_dir') . '/grpc_php_plugin';
+
+        $command = [
+            'protoc',
+            "--proto_path=$protoPath",
+            "--php_out=$phpOutPath",
+            "--grpc_out=$phpOutPath",
+            "--plugin=protoc-gen-grpc=$grpcPhpPluginPath"
+        ];
+
+        $files = glob($protoPath . '/*.proto');
+        foreach ($files as $file) {
+            $commandForFile = implode(' ', array_merge($command, [$file]));
+            $this->info("Executing the Command.. $commandForFile");
+            shell_exec($commandForFile);
+        }
+
+        $this->info('Compiled!');
     }
 }

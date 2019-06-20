@@ -228,4 +228,7 @@ return [
 
     ],
 
+    'proto_base_dir' => env('PROTO_BASE_DIR'),
+
+    'grpc_php_plugin_dir' => env('GRPC_PHP_PLUGIN_BASE_DIR')
 ];
