@@ -37,6 +37,7 @@ class CompileGrpcClients extends Command
      */
     public function handle()
     {
+        $this->info('Generating the proto compiler Command..');
         $this->info('Hello There!');
     }
 }
