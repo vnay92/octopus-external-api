@@ -23,6 +23,12 @@
         "nunomaduro/collision": "^3.0",
         "phpunit/phpunit": "^7.5"
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/stanley-cheung/Protobuf-PHP"
+        }
+    ],
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
