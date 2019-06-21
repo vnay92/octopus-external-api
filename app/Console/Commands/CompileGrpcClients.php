@@ -40,7 +40,7 @@ class CompileGrpcClients extends Command
         $this->info('Generating the proto compiler Command..');
 
         $baseDirPath = base_path();
-        $phpOutPath = "$baseDirPath/app/Clients";
+        $phpOutPath = "$baseDirPath";
         $protoPath = config('app.proto_base_dir');
         $grpcPhpPluginPath = config('app.grpc_php_plugin_dir') . '/grpc_php_plugin';
 
